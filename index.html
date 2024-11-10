@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <select id="difficulty">
+                <option value="beginner">Beginner (9x9, 10 mines)</option>
+                <option value="intermediate">Intermediate (16x16, 40 mines)</option>
+                <option value="expert">Expert (16x30, 99 mines)</option>
+                <option value="custom">Custom...</option>
+            </select>
+            <button id="new-game">
+                <span class="iconify" data-icon="material-symbols:refresh"></span>
+                <span>New Game</span>
+            </button>
+            <button id="dark-mode">
+                <span class="iconify" data-icon="material-symbols:dark-mode-outline"></span>
+                <span>Dark Mode</span>
+            </button>
+            <button id="sound-toggle">
+                <span class="iconify" data-icon="material-symbols:volume-up"></span>
+                <span>Sound</span>
+            </button>
+            <button id="help-btn">
+                <span class="iconify" data-icon="material-symbols:help-outline"></span>
+                <span>Help</span>
+            </button>
+        </div>
+        <div id="custom-dialog" class="dialog" style="display: none;">
+            <div class="dialog-content">
+                <h2>Custom Game</h2>
+                <div class="custom-controls">
+                    <label>Width: <input type="number" id="custom-width" min="5" max="50" value="10"></label>
+                    <label>Height: <input type="number" id="custom-height" min="5" max="50" value="10"></label>
+                    <label>Mines: <input type="number" id="custom-mines" min="1" value="10"></label>
+                </div>
+                <div class="dialog-buttons">
+                    <button id="custom-cancel">Cancel</button>
+                    <button id="custom-start">Start Game</button>
+                </div>
+            </div>
+        </div>
+        <div id="help-dialog" class="dialog" style="display: none;">
+            <div class="dialog-content">
+                <h2>How to Play</h2>
+                <div class="help-content">
+                    <h3>Basic Controls:</h3>
+                    <ul>
+                        <li>Left Click: Reveal cell</li>
+                        <li>Right Click: Flag/unflag cell</li>
+                        <li>Middle Click: Quick reveal (on numbers)</li>
+                    </ul>
+                    <h3>Keyboard Controls:</h3>
+                    <ul>
+                        <li>Arrow Keys: Move selection</li>
+                        <li>Space/Enter: Reveal cell</li>
+                        <li>F: Flag/unflag cell</li>
+                        <li>Q: Quick reveal</li>
+                    </ul>
+                    <h3>Cheat Mode (for practice):</h3>
+                    <ul>
+                        <li>Press C to toggle mine visibility</li>
+                        <li>Press H to highlight safe moves</li>
+                    </ul>
+                </div>
+                <div class="dialog-buttons">
+                    <button id="help-close">Close</button>
+                </div>
+            </div>
+        </div>
+        <div class="controls-info">
+            <p>Keyboard: Arrow keys to move, Space to reveal, F to flag</p>
+        </div>
+        <div class="game-stats">
+            <div class="stat">
+                <span>Games Played:</span>
+                <span id="games-played">0</span>
+            </div>
+            <div class="stat">
+                <span>Win Rate:</span>
+                <span id="win-rate">0%</span>
+            </div>
+            <div class="stat">
+                <span>Best Time:</span>
+                <span id="best-time">-</span>
+            </div>
+        </div>
+        <div class="game-info">
+            <div id="mine-count">Mines: 10</div>
+            <div id="timer">Time: 0</div>
+        </div>
+        <div id="board"></div>
+        <div class="high-scores">
+            <h2>High Scores</h2>
+            <div class="score-tabs">
+                <button class="score-tab active" data-difficulty="beginner">Beginner</button>
+                <button class="score-tab" data-difficulty="intermediate">Intermediate</button>
+                <button class="score-tab" data-difficulty="expert">Expert</button>
+            </div>
+            <div id="scores-list"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
